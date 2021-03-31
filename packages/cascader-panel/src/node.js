@@ -1,5 +1,5 @@
-import { isEqual, capitalize } from 'element-ui/src/utils/util';
-import { isDef } from 'element-ui/src/utils/shared';
+import { isEqual, capitalize } from 'xxgcs-element-ui/src/utils/util';
+import { isDef } from 'xxgcs-element-ui/src/utils/shared';
 
 let uid = 0;
 
@@ -34,7 +34,7 @@ export default class Node {
     const { config } = this;
     const childrenKey = config.children;
     const childrenData = this.data[childrenKey];
-    this.hasChildren = Array.isArray(childrenData);
+    this.hasChildren = Array.isArray(childrenData) && childrenData.length;
     this.children = (childrenData || []).map(child => new Node(child, config, this));
   }
 

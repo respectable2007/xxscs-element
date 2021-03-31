@@ -1,4 +1,4 @@
-import { addClass, removeClass } from 'element-ui/src/utils/dom';
+import { addClass, removeClass } from 'xxgcs-element-ui/src/utils/dom';
 
 class Transition {
   beforeEnter(el) {
