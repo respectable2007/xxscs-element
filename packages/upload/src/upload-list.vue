@@ -51,6 +51,13 @@
             <i class="el-icon-zoom-in"></i>
           </span>
           <span
+            class="el-upload-list__item-preview"
+            v-if="handleDownload && listType === 'picture-card'"
+            @click="handleDownload(file)"
+          >
+            <i class="el-icon-download"></i>
+          </span>
+          <span
             v-if="!disabled"
             class="el-upload-list__item-delete"
             @click="$emit('remove', file)"
@@ -91,6 +98,7 @@
         default: false
       },
       handlePreview: Function,
+      handleDownload: Function,
       listType: String
     },
     methods: {

@@ -71,6 +71,9 @@ export default {
     onPreview: {
       type: Function
     },
+    onDownload: {
+      type: Function
+    },
     onSuccess: {
       type: Function,
       default: noop
@@ -275,7 +278,8 @@ export default {
           listType={this.listType}
           files={this.uploadFiles}
           on-remove={this.handleRemove}
-          handlePreview={this.onPreview}>
+          handlePreview={this.onPreview}
+          handleDownload={this.onDownload}>
           {
             (props) => {
               if (this.$scopedSlots.file) {
@@ -312,6 +316,7 @@ export default {
         'on-success': this.handleSuccess,
         'on-error': this.handleError,
         'on-preview': this.onPreview,
+        'on-download': this.onDownload,
         'on-remove': this.handleRemove,
         'http-request': this.httpRequest
       },

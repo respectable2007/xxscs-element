@@ -126,6 +126,7 @@
   action="https://jsonplaceholder.typicode.com/posts/"
   list-type="picture-card"
   :on-preview="handlePictureCardPreview"
+  :on-download="handleDownload"
   :on-remove="handleRemove">
   <i class="el-icon-plus"></i>
 </el-upload>
@@ -147,6 +148,9 @@
       handlePictureCardPreview(file) {
         this.dialogImageUrl = file.url;
         this.dialogVisible = true;
+      },
+      handleDownload(file){
+        console.log(file)
       }
     }
   }

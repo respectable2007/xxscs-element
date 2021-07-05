@@ -1,6 +1,6 @@
 {
   "name": "xxgcs-element-ui",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "A Component Library for Vue.js.",
   "main": "lib/xxgcs-element-ui.common.js",
   "files": [
