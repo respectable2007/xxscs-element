@@ -127,6 +127,7 @@
   list-type="picture-card"
   :on-preview="handlePictureCardPreview"
   :on-download="handleDownload"
+  :on-success="handleSuccess"
   :on-remove="handleRemove">
   <i class="el-icon-plus"></i>
 </el-upload>
@@ -151,6 +152,9 @@
       },
       handleDownload(file){
         console.log(file)
+      },
+      handleSuccess(response, file, fileList) {
+        console.log(response, file, fileList)
       }
     }
   }

@@ -128,6 +128,9 @@ export default {
     listType(type) {
       if (type === 'picture-card' || type === 'picture') {
         this.uploadFiles = this.uploadFiles.map(file => {
+          if (file.raw) {
+            file.type = file.raw.type;
+          }
           if (!file.url && file.raw) {
             try {
               file.url = URL.createObjectURL(file.raw);
@@ -186,8 +189,10 @@ export default {
 
       if (file) {
         file.status = 'success';
+        if (file.raw) {
+          file.type = file.raw.type;
+        }
         file.response = res;
-
         this.onSuccess(res, file, this.uploadFiles);
         this.onChange(file, this.uploadFiles);
       }
