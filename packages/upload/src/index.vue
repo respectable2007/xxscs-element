@@ -106,6 +106,10 @@ export default {
     onExceed: {
       type: Function,
       default: noop
+    },
+    src: {
+      type: String,
+      default: 'url'
     }
   },
 
@@ -282,6 +286,7 @@ export default {
           disabled={this.uploadDisabled}
           listType={this.listType}
           files={this.uploadFiles}
+          src={this.src}
           on-remove={this.handleRemove}
           handlePreview={this.onPreview}
           handleDownload={this.onDownload}>

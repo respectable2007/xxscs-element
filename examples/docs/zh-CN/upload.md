@@ -384,6 +384,7 @@
 | disabled | 是否禁用 | boolean | — | false |
 | limit | 最大允许上传个数 |  number | — | — |
 | on-exceed | 文件超出个数限制时的钩子 | function(files, fileList) | — | - |
+| src | 自定义图片文件路径 | string | — | url |
 
 ### Slot
 | name | 说明 |

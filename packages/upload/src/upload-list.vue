@@ -22,7 +22,7 @@
         <img
           class="el-upload-list__item-thumbnail"
           v-if="file.status !== 'uploading' && ['picture-card', 'picture'].indexOf(listType) > -1 && (file.type !== 'application/pdf')"
-          :src="file.url" alt=""
+          :src="file[src]" alt=""
         >
         <span class="el-upload-list__item-thumbnail" 
           v-if="file.status !== 'uploading' && ['picture-card', 'picture'].indexOf(listType) > -1 && (file.type === 'application/pdf')">
@@ -103,7 +103,11 @@
       },
       handlePreview: Function,
       handleDownload: Function,
-      listType: String
+      listType: String,
+      src: {
+        type: String,
+        default: 'url'
+      }
     },
     methods: {
       parsePercentage(val) {
