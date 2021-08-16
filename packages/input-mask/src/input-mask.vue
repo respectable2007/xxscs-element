@@ -67,12 +67,12 @@
       value: {
         immediate: true,
         handler(value) {
-          let newVal = value === undefined ? value : Number(value);
+          console.log(value);
+          let newVal = value;
           if (newVal !== undefined) {
-            if (isNaN(newVal)) {
-              return;
-            }
+            console.log(this.validator(newVal));
             if (this.validator(newVal)) {
+              console.log(newVal);
               newVal = this.translate(newVal);
             }
 
