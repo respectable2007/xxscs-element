@@ -12,6 +12,7 @@ import MenuItem from '../packages/menu-item/index.js';
 import MenuItemGroup from '../packages/menu-item-group/index.js';
 import Input from '../packages/input/index.js';
 import InputNumber from '../packages/input-number/index.js';
+import InputMask from '../packages/input-mask/index.js';
 import Radio from '../packages/radio/index.js';
 import RadioGroup from '../packages/radio-group/index.js';
 import RadioButton from '../packages/radio-button/index.js';
@@ -98,6 +99,7 @@ const components = [
   MenuItemGroup,
   Input,
   InputNumber,
+  InputMask,
   Radio,
   RadioGroup,
   RadioButton,
@@ -198,7 +200,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-  version: '1.1.1',
+  version: '1.1.7',
   locale: locale.use,
   i18n: locale.i18n,
   install,
@@ -216,6 +218,7 @@ export default {
   MenuItemGroup,
   Input,
   InputNumber,
+  InputMask,
   Radio,
   RadioGroup,
   RadioButton,

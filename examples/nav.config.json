@@ -97,6 +97,10 @@
               "title": "InputNumber 计数器"
             },
             {
+              "path": "/input-mask",
+              "title": "InputMask 脱敏器"
+            },
+            {
               "path": "/select",
               "title": "Select 选择器"
             },
