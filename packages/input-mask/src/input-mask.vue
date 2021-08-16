@@ -15,7 +15,7 @@
       :disabled="disabled"
       :placeholder="placeholder"
       @input="handleInput"
-      @change="handleChange">
+      @change="handleInputChange">
     </el-input>
   </div>
 </template>
