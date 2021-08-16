@@ -2,13 +2,19 @@
   <div
     @dragstart.prevent
     class="el-input-mask">
-    <span
-      class="el-input-mask__append"
-      role="button"
-      @click="change"
-      @keydown.enter="increase">
-      <i class="el-icon-view"></i>
+    <el-popover
+      placement="top-start"
+      width="200"
+      trigger="manual"
+      :content="message"
+      v-model="visible">
+      <span class="el-input-mask__append"
+        role="button"
+        @click="change"
+        @keydown.enter="increase" slot="reference">
+        <i class="el-icon-view"></i>
     </span>
+    </el-popover>
     <el-input
       ref="input"
       :value="displayValue"
@@ -53,6 +59,10 @@
       },
       placeholder: {
         type: String
+      },
+      message: {
+        type: String,
+        default: '不符合当前规则，请重写填写'
       }
     },
     data() {
@@ -60,25 +70,27 @@
         currentValue: 0,
         userInput: null,
         displayValue: null,
-        disabled: true
+        disabled: true,
+        visible: false
       };
     },
     watch: {
       value: {
         immediate: true,
         handler(value) {
-          console.log(value);
           let newVal = value;
           if (newVal !== undefined) {
-            console.log(this.validator(newVal));
             if (this.validator(newVal)) {
-              console.log(newVal);
               newVal = this.translate(newVal);
+            } else {
+              this.disabled = false;
             }
-
           }
           this.currentValue = newVal;
           this.displayValue = this.disabled ? newVal : value;
+          if (this.displayValue.length === 0) {
+            this.disabled = false;
+          }
           this.userInput = value;
           this.$emit('input', newVal);
         }
@@ -86,7 +98,12 @@
     },
     methods: {
       change() {
-        this.disabled = this.displayValue === this.userInput;
+        if (this.displayValue.length > 0 && this.validator(this.userInput)) {
+          this.disabled = this.displayValue === this.userInput;
+          this.visible = false;
+        } else {
+          this.visible = true;
+        }
         this.displayValue = this.displayValue === this.currentValue ? this.userInput : this.currentValue;
       },
       handleInput(value) {
