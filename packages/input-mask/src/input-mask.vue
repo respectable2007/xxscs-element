@@ -79,6 +79,9 @@
       value: {
         immediate: true,
         handler(value) {
+          if (value.length === 0) {
+            return;
+          }
           let newVal = value;
           if (newVal !== undefined) {
             if (this.validator(newVal)) {

@@ -13,8 +13,11 @@
   export default {
     data() {
       return {
-        num: '130625880716082'
+        num: ''
       };
+    },
+    mounted(){
+      this.num = '130625880716082'
     },
     methods: {
       validator(value) {
