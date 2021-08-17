@@ -39,7 +39,7 @@
   export default {
     data() {
       return {
-        num: ''
+        num: '18268112314'
       };
     },
     methods: {

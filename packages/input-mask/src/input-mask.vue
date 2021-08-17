@@ -12,7 +12,8 @@
         role="button"
         @click="change"
         @keydown.enter="increase" slot="reference">
-        <i class="el-icon-view"></i>
+        {{disabled?'查看':'隐藏'}}
+        <!-- <i class="el-icon-view"></i> -->
     </span>
     </el-popover>
     <el-input
@@ -82,8 +83,6 @@
           if (newVal !== undefined) {
             if (this.validator(newVal)) {
               newVal = this.translate(newVal);
-            } else {
-              this.disabled = false;
             }
           }
           this.currentValue = newVal;
