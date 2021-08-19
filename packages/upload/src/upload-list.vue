@@ -110,14 +110,6 @@
         default: 'url'
       }
     },
-    watch: {
-      files: {
-        immediate: true,
-        handler(value) {
-          console.log(value);
-        }
-      }
-    },
     methods: {
       parsePercentage(val) {
         return parseInt(val, 10);

@@ -152,7 +152,6 @@ export default {
         this.uploadFiles = fileList.map(item => {
           item.uid = item.uid || (Date.now() + this.tempIndex++);
           item.status = item.status || 'success';
-          console.log(item);
           if (item.raw) {
             item.type = item.raw.type;
           }
