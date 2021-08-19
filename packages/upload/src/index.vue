@@ -301,6 +301,7 @@ export default {
           }
         </UploadList>
       );
+      console.log(uploadList);
     }
 
     const uploadData = {

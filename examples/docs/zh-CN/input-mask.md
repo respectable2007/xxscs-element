@@ -17,7 +17,7 @@
       };
     },
     mounted(){
-      this.num = '130625880716082'
+      this.num = '1306258'
     },
     methods: {
       validator(value) {

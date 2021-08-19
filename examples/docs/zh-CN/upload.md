@@ -173,7 +173,7 @@
   list-type="picture-card"
   :auto-upload="false">
     <i slot="default" class="el-icon-plus"></i>
-    <div slot="file" slot-scope="{file}">
+    <!-- <div slot="file" slot-scope="{file}">
       <img
         class="el-upload-list__item-thumbnail"
         :src="file.url" alt=""
@@ -200,7 +200,7 @@
           <i class="el-icon-delete"></i>
         </span>
       </span>
-    </div>
+    </div> -->
 </el-upload>
 <el-dialog :visible.sync="dialogVisible">
   <img width="100%" :src="dialogImageUrl" alt="">

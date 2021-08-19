@@ -24,6 +24,8 @@
           v-if="file.status !== 'uploading' && ['picture-card', 'picture'].indexOf(listType) > -1 && (file.type !== 'application/pdf')"
           :src="file[src]" alt=""
         >
+        <!-- <i class="el-icon-document el-upload-list__item-thumbnail"
+         v-if="file.status !== 'uploading' && ['picture-card', 'picture'].indexOf(listType) > -1 && (file.type === 'application/pdf')"></i> -->
         <span class="el-upload-list__item-thumbnail" 
           v-if="file.status !== 'uploading' && ['picture-card', 'picture'].indexOf(listType) > -1 && (file.type === 'application/pdf')">
           {{file.name}}

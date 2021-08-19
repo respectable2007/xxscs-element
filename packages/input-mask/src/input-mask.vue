@@ -63,14 +63,14 @@
       },
       message: {
         type: String,
-        default: '不符合当前规则，请重写填写'
+        default: '不符合当前规则'
       }
     },
     data() {
       return {
-        currentValue: 0,
-        userInput: null,
-        displayValue: null,
+        currentValue: '',
+        userInput: '',
+        displayValue: '',
         disabled: true,
         visible: false
       };
@@ -79,7 +79,12 @@
       value: {
         immediate: true,
         handler(value) {
+          if (typeof value === 'undefined' || value === null) {
+            value = '';
+          }
           if (value.length === 0) {
+            this.displayValue = '';
+            this.currentValue = '';
             return;
           }
           let newVal = value;
@@ -100,13 +105,18 @@
     },
     methods: {
       change() {
-        if (this.displayValue.length > 0 && this.validator(this.userInput)) {
-          this.disabled = this.displayValue === this.userInput;
-          this.visible = false;
+        if (this.displayValue.length > 0) {
+          if (this.validator(this.userInput)) {
+            this.disabled = this.displayValue === this.userInput;
+            this.visible = false;
+          } else {
+            this.visible = true;
+            this.disabled = !this.disabled;
+          }
+          this.displayValue = this.displayValue === this.currentValue ? this.userInput : this.currentValue;
         } else {
-          this.visible = true;
+          this.disabled = !this.disabled;
         }
-        this.displayValue = this.displayValue === this.currentValue ? this.userInput : this.currentValue;
       },
       handleInput(value) {
         this.userInput = value;
