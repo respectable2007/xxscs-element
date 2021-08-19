@@ -270,7 +270,6 @@
 
     .el-upload-list__item {
       overflow: hidden;
-      background-color: #fff;
       border: 1px solid #c0ccda;
       border-radius: 6px;
       box-sizing: border-box;
@@ -297,16 +296,24 @@
         }
       }
     }
-
-    .el-upload-list__item-name {
-      display: none;
-    }
-
     .el-upload-list__item-thumbnail {
-      width: 100%;
-      height: 100%;
+      width: 60%;
+      height: 60%;
+      margin: 0 auto;
+      text-align: center;
+      i{
+        font-size: 70px;
+        padding-top: 12px;
+      }
     }
-
+    .el-upload-list__item-name {
+      display: block;
+      width: 100%;
+      margin-top: 4px;
+      i{
+        display: none;
+      }
+    }
     .el-upload-list__item-status-label {
       position: absolute;
       right: -15px;
@@ -326,18 +333,19 @@
     }
 
     .el-upload-list__item-actions {
-      position: absolute;
+      display: block;
+      // position: absolute;
       width: 100%;
-      height: 100%;
-      left: 0;
-      top: 0;
+      height: 20%;
+      // left: 0;
+      // top: 0;
       cursor: default;
       text-align: center;
       color: #fff;
-      opacity: 0;
+      // opacity: 0;
       font-size: 20px;
       background-color: rgba(0, 0, 0, .5);
-      transition: opacity .3s;
+      // transition: opacity .3s;
       &::after {
         display: inline-block;
         content: "";
@@ -346,7 +354,8 @@
       }
 
       span {
-        display: none;
+        // display: none;
+        display: inline-block;
         cursor: pointer;
       }
 
@@ -361,7 +370,7 @@
       }
 
       &:hover {
-        opacity: 1;
+        // opacity: 1;
         span {
           display: inline-block;
         }
@@ -369,6 +378,7 @@
     }
 
     .el-progress {
+      display: none;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);

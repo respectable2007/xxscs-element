@@ -24,14 +24,13 @@
           v-if="file.status !== 'uploading' && ['picture-card', 'picture'].indexOf(listType) > -1 && (file.type !== 'application/pdf')"
           :src="file[src]" alt=""
         >
-        <!-- <i class="el-icon-document el-upload-list__item-thumbnail"
-         v-if="file.status !== 'uploading' && ['picture-card', 'picture'].indexOf(listType) > -1 && (file.type === 'application/pdf')"></i> -->
-        <span class="el-upload-list__item-thumbnail" 
-          v-if="file.status !== 'uploading' && ['picture-card', 'picture'].indexOf(listType) > -1 && (file.type === 'application/pdf')">
+        <div class="el-upload-list__item-thumbnail"
+         v-if=" ['picture-card'].indexOf(listType) > -1 && (file.type === 'application/pdf')">
+         <i class="el-icon-document "></i>
+        </div>
+        <a class="el-upload-list__item-name" :title="file.name" @click="handleClick(file)">
+          <i class="el-icon-document"></i>
           {{file.name}}
-        </span>
-        <a class="el-upload-list__item-name" @click="handleClick(file)">
-          <i class="el-icon-document"></i>{{file.name}}
         </a>
         <label class="el-upload-list__item-status-label">
           <i :class="{
@@ -109,6 +108,14 @@
       src: {
         type: String,
         default: 'url'
+      }
+    },
+    watch: {
+      files: {
+        immediate: true,
+        handler(value) {
+          console.log(value);
+        }
       }
     },
     methods: {

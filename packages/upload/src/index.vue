@@ -152,6 +152,10 @@ export default {
         this.uploadFiles = fileList.map(item => {
           item.uid = item.uid || (Date.now() + this.tempIndex++);
           item.status = item.status || 'success';
+          console.log(item);
+          if (item.raw) {
+            item.type = item.raw.type;
+          }
           return item;
         });
       }
@@ -167,7 +171,8 @@ export default {
         size: rawFile.size,
         percentage: 0,
         uid: rawFile.uid,
-        raw: rawFile
+        raw: rawFile,
+        type: rawFile.type
       };
 
       if (this.listType === 'picture-card' || this.listType === 'picture') {
@@ -213,13 +218,16 @@ export default {
       this.onChange(file, this.uploadFiles);
     },
     handleRemove(file, raw) {
+
       if (raw) {
         file = this.getFile(raw);
       }
       let doRemove = () => {
         this.abort(file);
         let fileList = this.uploadFiles;
+
         fileList.splice(fileList.indexOf(file), 1);
+
         this.onRemove(file, fileList);
       };
 
@@ -301,7 +309,6 @@ export default {
           }
         </UploadList>
       );
-      console.log(uploadList);
     }
 
     const uploadData = {
