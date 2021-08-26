@@ -21,12 +21,16 @@
       <slot :file="file">
         <img
           class="el-upload-list__item-thumbnail"
-          v-if="file.status !== 'uploading' && ['picture-card', 'picture'].indexOf(listType) > -1 && (file.type !== 'application/pdf')"
+          v-if="file.status !== 'uploading' && ['picture-card', 'picture'].indexOf(listType) > -1 && (imgs.indexOf(file.type) > -1)"
           :src="file[src]" alt=""
         >
         <div class="el-upload-list__item-thumbnail"
          v-if=" ['picture-card'].indexOf(listType) > -1 && (file.type === 'application/pdf')">
-         <i class="el-icon-document "></i>
+         <img src="./assets/PDF.svg" style="width:100%;">
+        </div>
+        <div class="el-upload-list__item-thumbnail"
+         v-if=" ['picture-card'].indexOf(listType) > -1 && (docs.indexOf(file.type) > -1 )">
+         <img src="./assets/docx.svg" style="width:100%;">
         </div>
         <a class="el-upload-list__item-name" :title="file.name" @click="handleClick(file)">
           <i class="el-icon-document"></i>
@@ -86,7 +90,9 @@
 
     data() {
       return {
-        focusing: false
+        focusing: false,
+        imgs: ['image/jpeg', 'image/jpg', 'image/png'],
+        docs: ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword']
       };
     },
     components: { ElProgress },
@@ -110,6 +116,16 @@
         default: 'url'
       }
     },
+    /* watch: {
+      files: {
+        immediate: true,
+        handler(val) {
+          if (val.length) {
+            console.log(val[0].type);
+          }
+        }
+      }
+    }, */
     methods: {
       parsePercentage(val) {
         return parseInt(val, 10);

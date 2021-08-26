@@ -13,7 +13,6 @@
         @click="change"
         @keydown.enter="increase" slot="reference">
         {{disabled?'查看':'隐藏'}}
-        <!-- <i class="el-icon-view"></i> -->
     </span>
     </el-popover>
     <el-input
@@ -85,6 +84,7 @@
           if (value.length === 0) {
             this.displayValue = '';
             this.currentValue = '';
+            this.visible = false;
             return;
           }
           let newVal = value;
@@ -112,6 +112,9 @@
           } else {
             this.visible = true;
             this.disabled = !this.disabled;
+            if (this.disabled) {
+              this.visible = false;
+            }
           }
           this.displayValue = this.displayValue === this.currentValue ? this.userInput : this.currentValue;
         } else {
